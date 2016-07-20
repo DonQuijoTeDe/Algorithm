@@ -1,0 +1,121 @@
+Since the max digits of this problem would up to 10^6
+The original code I wrote ran in C++ would cause TLE(I use 
+string operations and the "insert" method would slow
+down my execution time, one insertion for O(N) where N
+is the length of the string and about 360s to print out
+the maximum value)
+
+But I think if you still want to use C++ to deal with
+this big integer problem, maybe you can try using "array"
+i.e. if the string is "12345" then store array[0] as 1,
+array[1] as 2 etc. Or you can store array[0] as 1234 then
+array[1] as 5
+
+Following is the main source code in JAVA:
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        BigInteger t1 = input.nextBigInteger();
+        BigInteger t2 = input.nextBigInteger();
+        
+        BigInteger[] bigint = new BigInteger[21];
+        bigint[1] = t1;
+        bigint[2] = t2;
+        
+        int n = input.nextInt();
+        
+        for(int i=3;i<=n;i++){
+            bigint[i] = bigint[i-2].add(bigint[i-1].pow(2));
+        }
+        
+        System.out.println(bigint[n]);
+    }
+}
+
+Here is the original code wrote in C++:
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+string BigIntegerAdd(string, string);
+string BigIntegerMul(string, string);
+
+int main(){
+	int t1, t2, n, i;
+	cin >> t1 >> t2 >> n;
+
+	string DP[21];
+	DP[1] = to_string(t1);
+	DP[2] = to_string(t2);
+
+	for (i = 3; i <= n; i++){
+		DP[i] = BigIntegerAdd(DP[i - 2], BigIntegerMul(DP[i - 1], DP[i - 1]));
+	}
+
+	cout << DP[n];
+
+	return 0;
+}
+
+string BigIntegerAdd(string a, string b){
+	string answer = "";
+	int digitA, digitB, digit, carry = 0, temp;
+
+	digitA = a.length();
+	digitB = b.length();
+	digit = digitA > digitB ? digitA : digitB;
+
+	while (digit--){
+		temp = carry;
+		if (--digitA >= 0){
+			temp += (a[digitA] - '0');
+		}
+		if (--digitB >= 0){
+			temp += (b[digitB] - '0');
+		}
+		carry = temp / 10;
+		temp %= 10;
+		answer.insert(answer.begin(), temp + '0'); // if answer's length is 1000
+		                                           // it will cause O(1000-1) time
+												   // to complete it's operation
+	}
+	if (carry){
+		answer.insert(answer.begin(), carry + '0');
+	}
+
+	return answer;
+}
+
+string BigIntegerMul(string a, string b){
+	string answer = "";
+	string partialresult;
+	int carry = 0, temp, i, j, k;
+
+	for (i = b.length() - 1, k = 0; i >= 0; i--, k++){
+		partialresult = "";
+		for (j = k; j>0; j--){
+			partialresult.insert(partialresult.begin(), '0');
+		}
+		temp = carry = 0;
+		for (j = a.length() - 1; j >= 0; j--){
+			temp = carry + (b[i] - '0')*(a[j] - '0');
+			carry = temp / 10;
+			temp %= 10;
+			partialresult.insert(partialresult.begin(), temp + '0');
+		}
+		if (carry){
+			partialresult.insert(partialresult.begin(), carry + '0');
+		}
+
+		answer = BigIntegerAdd(answer, partialresult);
+	}
+
+	return answer;
+}
