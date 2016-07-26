@@ -1,0 +1,28 @@
+Insertion Sort is a simple sorting technique which was covered in previous
+challenges. Sometimes, arrays may be too large for us to wait around for insertion
+sort to finish. Is there some other way we can calculate the number of times
+Insertion Sort shifts each elements when sorting an array?
+
+Input Format
+The first line contains the number of test cases, T. T test cases follow. The first
+line for each test case contains N, the number of elements to be sorted. The next
+line contains N integers(a[1], a[2], ..., a[N]).
+
+Output Format
+Output T lines containing the required answer for each test case.
+
+Constraints
+1<=T<=15
+1<=N<=100000
+1<=a[i]<=10000000
+
+Sample Input
+2
+5
+1 1 1 2 2
+5
+2 1 3 1 2
+
+Sample Output
+0
+4
