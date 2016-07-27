@@ -22,7 +22,6 @@ int main(){
 }
 
 void quickSort(vector<int> &vec) {
-
     if(vec.size()<=1){
         return;
     }
@@ -42,7 +41,7 @@ void quickSort(vector<int> &vec) {
             right.push_back(vec[i]);
         }
     }
-    
+
     // Conquer
     quickSort(left);
     quickSort(right);
@@ -57,5 +56,4 @@ void quickSort(vector<int> &vec) {
         cout << vec[i] << " ";
     }
     cout << "\n";
-
 }

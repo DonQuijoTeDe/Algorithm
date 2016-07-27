@@ -33,7 +33,6 @@ int main() {
 }
 
 void QuickSort(int left, int right){
-
     if(left < right){
         int p = vq[right];
         int index = left;

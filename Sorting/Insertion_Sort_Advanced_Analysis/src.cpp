@@ -29,6 +29,7 @@ int main() {
 
         cout << counter << "\n";
     }
+    
     return 0;
 }
 

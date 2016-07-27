@@ -9,7 +9,7 @@ struct Item {
 int main() {
 	int T, W, N, i, j;
 
-    cin >> T;
+  cin >> T;
 	while (T--) {
 		cin >> N >> W;
 

@@ -25,7 +25,6 @@ int main() {
 }
 
 void QuickSort(int left,int right){
-
     if(left<right){
         int p=vec[right];
         int index=left;

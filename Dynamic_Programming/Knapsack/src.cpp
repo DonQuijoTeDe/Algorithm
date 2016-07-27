@@ -5,15 +5,15 @@ using namespace std;
 int main() {
     int Case,n,k;
     cin >> Case;
-    
+
     while(Case--){
         // Like Coin Change Problem
         // n -> type of coins
 
         cin >> n >> k;
 
-        vector<bool> DP(k,false);
-        vector<int> Number(n,0);
+        vector<bool> DP(k, false);
+        vector<int> Number(n, 0);
 
         for(int i=0;i<n;i++){
             cin >> Number[i];
@@ -33,7 +33,6 @@ int main() {
                 break;
             }
         }
-
     }
 
     return 0;

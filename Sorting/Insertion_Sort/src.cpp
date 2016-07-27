@@ -6,6 +6,7 @@
 #include <cassert>
 #include <iostream>
 using namespace std;
+
 void insertionSort(int ar_size, int* ar) {
     for(int i=1;i<ar_size;i++){
         for(int j=i;j>0;j--){
@@ -21,6 +22,7 @@ void insertionSort(int ar_size, int* ar) {
         cout << "\n";
     }
 }
+
 int main(void) {
 
     int _ar_size;

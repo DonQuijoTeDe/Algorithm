@@ -45,12 +45,12 @@ int main() {
             DP[i] = max(DP[i + 1] + 1, DP[i]);
     }
 
-    long long int result = 0; // the result may exceed 2^31 - 1(signed int) even 2^32 - 1(unsinged int)
+    long long int result = 0;
     for(int i = 0; i < n; i++)
         result += DP[i];
 
     cout << result;
-    
+
     return 0;
 }
 /*
